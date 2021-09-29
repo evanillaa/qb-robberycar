@@ -51,10 +51,10 @@ end)
 -----------------------------------
 ---------- evento do olho ---------
 -----------------------------------
-RegisterNetEvent("xp-car:cl:hack")
-AddEventHandler("xp-car:cl:hack",function()
+RegisterNetEvent("qb-car:cl:hack")
+AddEventHandler("qb-car:cl:hack",function()
     if CurrentCopsOnly >= 1 then
-        TriggerServerEvent("xp-car:sv:pendrive")
+        TriggerServerEvent("qb-car:sv:pendrive")
     else
         QBCore.Functions.Notify("Não há policiais suficientes", "error")
     end
@@ -62,12 +62,12 @@ end)
 -----------------------------------
 --------- Evento do hack ----------
 -----------------------------------
-RegisterNetEvent("xp-car:cl:green")
-AddEventHandler("xp-car:cl:green",function()
+RegisterNetEvent("qb-car:cl:green")
+AddEventHandler("qb-car:cl:green",function()
     TriggerEvent("utk_fingerprint:Start", 4, 6, 2, function(outcome, reason)
         if outcome == true then 
             QBCore.Functions.Notify("O sistema foi invadido", "success")
-            TriggerServerEvent("xp-car:additem:green")
+            TriggerServerEvent("qb-car:additem:green")
             TriggerServerEvent('XP:Hud:Server:GainStress', math.random(1, 3))
             spawncargreen()
             local chance = math.random(1, 100)
@@ -82,12 +82,12 @@ AddEventHandler("xp-car:cl:green",function()
     end)
 end)
 
-RegisterNetEvent("xp-car:cl:red")
-AddEventHandler("xp-car:cl:red",function()
+RegisterNetEvent("qb-car:cl:red")
+AddEventHandler("qb-car:cl:red",function()
     TriggerEvent("utk_fingerprint:Start", 4, 6, 2, function(outcome, reason)
         if outcome == true then 
             QBCore.Functions.Notify("O sistema foi invadido", "success")
-            TriggerServerEvent("xp-car:additem:red")
+            TriggerServerEvent("qb-car:additem:red")
             TriggerServerEvent('XP:Hud:Server:GainStress', math.random(1, 4))
             spawncarred()
             local chance = math.random(1, 100)
@@ -102,12 +102,12 @@ AddEventHandler("xp-car:cl:red",function()
     end)
 end)
 
-RegisterNetEvent("xp-car:cl:yellow")
-AddEventHandler("xp-car:cl:yellow",function()
+RegisterNetEvent("qb-car:cl:yellow")
+AddEventHandler("qb-car:cl:yellow",function()
     TriggerEvent("utk_fingerprint:Start", 4, 6, 2, function(outcome, reason)
         if outcome == true then
             QBCore.Functions.Notify("O sistema foi invadido", "success")
-            TriggerServerEvent("xp-car:additem:yellow")
+            TriggerServerEvent("qb-car:additem:yellow")
             TriggerServerEvent('XP:Hud:Server:GainStress', math.random(1, 5))
             spawncaryellow()
             TriggerEvent("police-dispatch:PDMRobbery")
@@ -121,8 +121,8 @@ end)
 -----------------------------------
 ---------- Progress Bar -----------
 -----------------------------------
-RegisterNetEvent("xp-car:cl:progressbar")
-AddEventHandler("xp-car:cl:progressbar", function()
+RegisterNetEvent("qb-car:cl:progressbar")
+AddEventHandler("qb-car:cl:progressbar", function()
     QBCore.Functions.Progressbar("coke_destroy", "Estabelecendo Conexão", 10000, false, false, {
         disableMovement = true,
         disableCarMovement = false,
@@ -144,8 +144,8 @@ end)
 -----------------------------------
 ----- Evento de ligar o carro -----
 -----------------------------------
-RegisterNetEvent('xp-car:chave:green')
-AddEventHandler('xp-car:chave:green', function()
+RegisterNetEvent('qb-car:chave:green')
+AddEventHandler('qb-car:chave:green', function()
     local ped = GetPlayerPed(-1)
     local inVehicle = IsPedInAnyVehicle(ped)
     if inVehicle then
@@ -172,16 +172,16 @@ AddEventHandler('xp-car:chave:green', function()
             end)
         else
             QBCore.Functions.Notify("Você não pode fazer isso nesse veículo", "error")
-            TriggerServerEvent("xp-car:additem:green")
+            TriggerServerEvent("qb-car:additem:green")
         end
     else
         QBCore.Functions.Notify("Você não está em um veículo", "error")
-        TriggerServerEvent("xp-car:additem:green")
+        TriggerServerEvent("qb-car:additem:green")
     end
 end)
 
-RegisterNetEvent('xp-car:chave:red')
-AddEventHandler('xp-car:chave:red', function()
+RegisterNetEvent('qb-car:chave:red')
+AddEventHandler('qb-car:chave:red', function()
     local ped = GetPlayerPed(-1)
     local inVehicle = IsPedInAnyVehicle(ped)
     if inVehicle then
@@ -208,16 +208,16 @@ AddEventHandler('xp-car:chave:red', function()
             end)
         else
             QBCore.Functions.Notify("Esse veículo não é válido para isso", "error")
-            TriggerServerEvent("xp-car:additem:red")
+            TriggerServerEvent("qb-car:additem:red")
         end
     else
         QBCore.Functions.Notify("Você não está em um veículo", "error")
-        TriggerServerEvent("xp-car:additem:red")
+        TriggerServerEvent("qb-car:additem:red")
     end
 end)
 
-RegisterNetEvent('xp-car:chave:yellow')
-AddEventHandler('xp-car:chave:yellow', function()
+RegisterNetEvent('qb-car:chave:yellow')
+AddEventHandler('qb-car:chave:yellow', function()
     local ped = GetPlayerPed(-1)
     local inVehicle = IsPedInAnyVehicle(ped)
     if inVehicle then
@@ -244,7 +244,7 @@ AddEventHandler('xp-car:chave:yellow', function()
             end)
         else
             QBCore.Functions.Notify("Esse veículo não é válido para isso", "error")
-            TriggerServerEvent("xp-car:additem:yellow")
+            TriggerServerEvent("qb-car:additem:yellow")
         end
     else
         QBCore.Functions.Notify("Você não está em um veículo", "error")
@@ -1692,7 +1692,7 @@ function entregagreen()
                             if not SellStarted then
                                 QBCore.Functions.ShowFloatingHelpNotification("[~g~E~w~] Entregar Veículo",vector3(cardeli.x, cardeli.y, cardeli.z))
                                 if IsControlJustPressed(0, Keys["E"]) then
-                                    TriggerServerEvent("xp-car:paid:green")
+                                    TriggerServerEvent("qb-car:paid:green")
                                     inRange = false
                                     QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(ped))
                                     RemoveBlip(entrega)
@@ -1752,7 +1752,7 @@ function entregared()
                             if not SellStarted then
                                 QBCore.Functions.ShowFloatingHelpNotification("[~g~E~w~] Entregar Veículo",vector3(cardeli.x, cardeli.y, cardeli.z))
                                 if IsControlJustPressed(0, Keys["E"]) then
-                                    TriggerServerEvent("xp-car:paid:red")
+                                    TriggerServerEvent("qb-car:paid:red")
                                     inRange = false
                                     QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(ped))
                                     RemoveBlip(entrega)
@@ -1812,7 +1812,7 @@ function entregayellow()
                                 QBCore.Functions.ShowFloatingHelpNotification("[~g~E~w~] Entregar Veículo",vector3(cardeli.x, cardeli.y, cardeli.z))
                                 if IsControlJustPressed(0, Keys["E"]) then
                                     QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(ped))
-                                    TriggerServerEvent("xp-car:paid:yellow")
+                                    TriggerServerEvent("qb-car:paid:yellow")
                                     inRange = false
                                     RemoveBlip(entrega)
                                 end

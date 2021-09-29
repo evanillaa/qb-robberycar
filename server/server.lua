@@ -7,8 +7,8 @@ TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
 -----------------------------------
 ----------- Inicio do roubo -------
 -----------------------------------
-RegisterServerEvent("xp-car:sv:pendrive")
-AddEventHandler("xp-car:sv:pendrive", function()
+RegisterServerEvent("qb-car:sv:pendrive")
+AddEventHandler("qb-car:sv:pendrive", function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(source)
     local pendrive_green = Player.Functions.GetItemByName("pendrive_green")
@@ -23,10 +23,10 @@ AddEventHandler("xp-car:sv:pendrive", function()
             Citizen.CreateThread(function()
                 Player.Functions.RemoveItem('pendrive_green', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
-                TriggerClientEvent("xp-car:cl:progressbar", src)
+                TriggerClientEvent("qb-car:cl:progressbar", src)
                 Citizen.Wait(10000)
 
-                TriggerClientEvent("xp-car:cl:green", src)
+                TriggerClientEvent("qb-car:cl:green", src)
             end)
         else
             TriggerClientEvent('QBCore:Notify', src, 'Aguarde antes de tentar hackear o indiano!', 'inform')
@@ -36,10 +36,10 @@ AddEventHandler("xp-car:sv:pendrive", function()
             Citizen.CreateThread(function()
                 Player.Functions.RemoveItem('pendrive_red', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
-                TriggerClientEvent("xp-car:cl:progressbar", src)
+                TriggerClientEvent("qb-car:cl:progressbar", src)
                 Citizen.Wait(10000)
 
-                TriggerClientEvent("xp-car:cl:red", src)
+                TriggerClientEvent("qb-car:cl:red", src)
             end)
         else
             TriggerClientEvent('QBCore:Notify', src, 'Aguarde antes de tentar hackear o indiano!', 'inform')
@@ -49,10 +49,10 @@ AddEventHandler("xp-car:sv:pendrive", function()
             Citizen.CreateThread(function()
                 Player.Functions.RemoveItem('pendrive_yellow', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
-                TriggerClientEvent("xp-car:cl:progressbar", src)
+                TriggerClientEvent("qb-car:cl:progressbar", src)
                 Citizen.Wait(10000)
 
-                TriggerClientEvent("xp-car:cl:yellow", src)
+                TriggerClientEvent("qb-car:cl:yellow", src)
             end)
         else
             TriggerClientEvent('QBCore:Notify', src, 'Aguarde antes de tentar hackear o indiano!', 'inform')
@@ -72,7 +72,7 @@ QBCore.Functions.CreateUseableItem("chave_green", function(source, item)
 
     Player.Functions.RemoveItem('chave_green', 1)
     TriggerClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
-    TriggerClientEvent("xp-car:chave:green", src)
+    TriggerClientEvent("qb-car:chave:green", src)
 end)
 
 QBCore.Functions.CreateUseableItem("chave_red", function(source, item)
@@ -83,7 +83,7 @@ QBCore.Functions.CreateUseableItem("chave_red", function(source, item)
 
     Player.Functions.RemoveItem('chave_red', 1)
     TriggerClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
-    TriggerClientEvent("xp-car:chave:red", src)
+    TriggerClientEvent("qb-car:chave:red", src)
 end)
 
 QBCore.Functions.CreateUseableItem("chave_yellow", function(source, item)
@@ -92,7 +92,7 @@ QBCore.Functions.CreateUseableItem("chave_yellow", function(source, item)
     local chave_yellow = Player.Functions.GetItemByName("chave_yellow")
     local pendrive = QBCore.Shared.Items["chave_yellow"]
 
-    TriggerClientEvent("xp-car:chave:yellow", src)
+    TriggerClientEvent("qb-car:chave:yellow", src)
     Player.Functions.RemoveItem('chave_yellow', 1)
     TriggerwClientEvent('inventory:client:ItemBox', src, pendrive, "remove")
    
@@ -100,24 +100,24 @@ end)
 -----------------------------------
 ---- Evento para entregar chave ---
 -----------------------------------
-RegisterServerEvent("xp-car:additem:green")
-AddEventHandler("xp-car:additem:green", function()
+RegisterServerEvent("qb-car:additem:green")
+AddEventHandler("qb-car:additem:green", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local chave_green = QBCore.Shared.Items["chave_green"]
     Player.Functions.AddItem('chave_green', 1)
     TriggerClientEvent('inventory:client:ItemBox', source, chave_green, "add")
 end)
 
-RegisterServerEvent("xp-car:additem:red")
-AddEventHandler("xp-car:additem:red", function()
+RegisterServerEvent("qb-car:additem:red")
+AddEventHandler("qb-car:additem:red", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local chave_red = QBCore.Shared.Items["chave_red"]
     Player.Functions.AddItem('chave_red', 1)
     TriggerClientEvent('inventory:client:ItemBox', source, chave_red, "add")
 end)
 
-RegisterServerEvent("xp-car:additem:yellow")
-AddEventHandler("xp-car:additem:yellow", function()
+RegisterServerEvent("qb-car:additem:yellow")
+AddEventHandler("qb-car:additem:yellow", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local chave_yellow = QBCore.Shared.Items["chave_yellow"]
     Player.Functions.AddItem('chave_yellow', 1)
@@ -126,24 +126,24 @@ end)
 -----------------------------------
 ---- Evento para pagar o player ---
 -----------------------------------
-RegisterServerEvent("xp-car:paid:green")
-AddEventHandler("xp-car:paid:green", function()
+RegisterServerEvent("qb-car:paid:green")
+AddEventHandler("qb-car:paid:green", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local bills = QBCore.Shared.Items["bills"]
     Player.Functions.AddItem('bills', math.random(2000,4000))
     TriggerClientEvent('inventory:client:ItemBox', source, bills, "add")
 end)
 
-RegisterServerEvent("xp-car:paid:red")
-AddEventHandler("xp-car:paid:red", function()
+RegisterServerEvent("qb-car:paid:red")
+AddEventHandler("qb-car:paid:red", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local bills = QBCore.Shared.Items["bills"]
     Player.Functions.AddItem('bills', math.random(4000,6000))
     TriggerClientEvent('inventory:client:ItemBox', source, bills, "add")
 end)
 
-RegisterServerEvent("xp-car:paid:yellow")
-AddEventHandler("xp-car:paid:yellow", function()
+RegisterServerEvent("qb-car:paid:yellow")
+AddEventHandler("qb-car:paid:yellow", function()
     local Player = QBCore.Functions.GetPlayer(source)
     local bills = QBCore.Shared.Items["bills"]
     Player.Functions.AddItem('bills', math.random(6000,10000))
